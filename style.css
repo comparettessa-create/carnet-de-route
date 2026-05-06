@@ -21,7 +21,7 @@ html {
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: var(--bg);
+  background: #ffffff;
   color: var(--text);
 }
 
@@ -59,37 +59,12 @@ a {
 .logo {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
-.logo__circle {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: #a8ba8a;
-  border: 2px solid #8ba170;
-  display: grid;
-  place-items: center;
-}
-
-.logo__palm {
-  color: var(--orange);
-  font-size: 22px;
-}
-
-.logo__text {
-  display: flex;
-  flex-direction: column;
-  color: #9daf89;
-  text-transform: uppercase;
-  font-family: "Balsamiq Sans", sans-serif;
-  letter-spacing: 0.03em;
-  font-size: 12px;
-}
-
-.logo__text small {
-  text-transform: none;
-  font-size: 9px;
+.logo img {
+  width: 90px;
+  height: auto;
+  display: block;
 }
 
 .nav {
@@ -155,17 +130,26 @@ a {
 
 .destinations {
   position: relative;
-  padding: 18px 0 12px;
+  padding: 18px 0 18px;
 }
 
 .map-bg {
   position: absolute;
-  inset: 6px 0 auto;
-  height: 230px;
-  background: #b7cf9d;
-  clip-path: polygon(5% 20%, 25% 8%, 45% 15%, 65% 8%, 90% 20%, 85% 48%, 66% 64%, 48% 52%, 26% 68%, 10% 50%);
-  opacity: 0.85;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 300px;
   z-index: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.map-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.95;
 }
 
 .destination-grid {
@@ -246,7 +230,7 @@ a {
 }
 
 .contact {
-  padding: 30px 0 0;
+  padding: 30px 0 36px;
 }
 
 .contact__wrap {
@@ -287,37 +271,29 @@ a {
 }
 
 .contact__art {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-.map-doodle {
-  width: 320px;
-  height: 220px;
-  border: 2px dashed #efb07d;
-  border-radius: 48% 52% 42% 58% / 44% 57% 43% 56%;
+.doodle-main {
+  width: min(360px, 90%);
+  height: auto;
+  display: block;
   position: relative;
-  color: #efb07d;
+  z-index: 2;
 }
 
-.bubble {
+.doodle-path {
   position: absolute;
-  top: -16px;
-  right: 40px;
-  border: 1px solid #efb07d;
-  border-radius: 20px;
-  padding: 2px 10px;
-  font-family: "Balsamiq Sans", sans-serif;
-  font-size: 18px;
-}
-
-.label {
-  position: absolute;
-  top: 90px;
-  left: 90px;
-  font-family: "Balsamiq Sans", sans-serif;
-  font-size: 28px;
+  right: -10px;
+  bottom: -16px;
+  width: min(260px, 45%);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .footer {
@@ -340,16 +316,15 @@ a {
 }
 
 .footer-logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: #a8ba8a;
-  color: #f9f9f9;
-  font-family: "Balsamiq Sans", sans-serif;
-  font-size: 14px;
-  display: grid;
-  place-items: center;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo img {
+  width: 96px;
+  height: auto;
+  display: block;
 }
 
 .reveal {
@@ -402,6 +377,12 @@ a {
   .contact-form {
     max-width: 100%;
   }
+
+  .doodle-path {
+    width: min(220px, 55%);
+    right: -4px;
+    bottom: -8px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -418,5 +399,9 @@ a {
   .footer__inner {
     flex-direction: column;
     gap: 14px;
+  }
+
+  .doodle-path {
+    display: none;
   }
 }
